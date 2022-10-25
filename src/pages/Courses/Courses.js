@@ -1,6 +1,5 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import CourseContent from '../../components/CourseContent/CourseContent';
 import LeftSideNavber from '../Shared/LeftSideNavber/LeftSideNavber';
 
@@ -21,7 +20,7 @@ const Courses = () => {
                     </Col> 
                 </Row>
             </Container>
-            <Link to="/courses-details" className='mx-3 text-decoration-none fs-5'>Go to course Details</Link>
+            
         </div>
     );
 };

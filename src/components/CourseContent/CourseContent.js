@@ -2,6 +2,7 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import { Link } from 'react-router-dom';
 
 const CourseContent = () => {
     return (
@@ -16,6 +17,7 @@ const CourseContent = () => {
                     This is a longer card with supporting text below as a natural
                     lead-in to additional content. This content is a little bit
                     longer.
+                    <Link to="/courses-details" className='mx-3 text-decoration-none fs-5'>Read More...</Link>
                 </Card.Text >
                 </Card.Body>
             </Card>
