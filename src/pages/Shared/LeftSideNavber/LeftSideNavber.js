@@ -3,7 +3,7 @@ import React from 'react';
 const LeftSideNavber = () => {
     return (
         <div>
-            <h1>Left Side Navber</h1>
+            <h3>Left Side Content</h3>
         </div>
     );
 };
