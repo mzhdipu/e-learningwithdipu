@@ -3,10 +3,12 @@ import { Col, Container, Row } from 'react-bootstrap';
 import LeftSideNavber from '../../pages/Shared/LeftSideNavber/LeftSideNavber';
 import Card from 'react-bootstrap/Card';
 import "./CourseDetails.css"
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 
 const CourseDetails = () => {
+    const coursesData = useLoaderData();
+    const {_id, title, image_url, details} = coursesData;
     return (
         <div>
             <Container>
@@ -20,13 +22,11 @@ const CourseDetails = () => {
                         <Row>
                             <Col>
                             <Card>
-                                <Card.Img className='card-image' variant="top" src="https://images.pexels.com/photos/1279109/pexels-photo-1279109.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+                                <Card.Img className='card-image' variant="top" src={image_url} />
                                 <Card.Body>
-                                <Card.Title>Card title</Card.Title>
+                                <Card.Title>{title}</Card.Title>
                                 <Card.Text>
-                                    This is a longer card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit
-                                    longer.
+                                    {details}
                                     <Link to="/cart" className='mx-3 text-decoration-none fs-5'>Get Premium Access</Link>
                                 </Card.Text>
                                 </Card.Body>

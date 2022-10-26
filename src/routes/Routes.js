@@ -21,11 +21,17 @@ export const router = createBrowserRouter([
             },
             {
                 path : "/courses",
-                element : <Courses></Courses>
+                element : <Courses></Courses>,
+                loader : () => {
+                    return fetch(`http://localhost:5000/courses`)
+                }
             },
             {
-                path : "/courses-details",
-                element : <CourseDetails></CourseDetails>
+                path : "/courses-details/:id",
+                element : <CourseDetails></CourseDetails>,
+                loader : ({params}) => {
+                    return fetch(`http://localhost:5000/courses-details/${params.id}`)
+                }
             },
             {
                 path : "/cart",

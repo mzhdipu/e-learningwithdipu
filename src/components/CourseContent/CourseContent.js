@@ -1,29 +1,31 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { Link } from 'react-router-dom';
+import "./CourseContent.css"
 
-const CourseContent = () => {
+const CourseContent = ({course}) => {
+    const {_id, title, image_url, details} = course;
+
     return (
-        <Row xs={1} md={2} className="g-4">
-        {Array.from({ length: 4 }).map((_, idx) => (
-            <Col>
+        <div>
             <Card>
-                <Card.Img variant="top" src="holder.js/100px160" />
+                <Card.Img variant="top" src={image_url} />
                 <Card.Body>
-                <Card.Title>Card title</Card.Title>
-                <Card.Text>
-                    This is a longer card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                    <Link to="/courses-details" className='mx-3 text-decoration-none fs-5'>Read More...</Link>
-                </Card.Text >
+                    <Card.Title>{title}</Card.Title>
+                    <Card.Text>
+                    {
+                        details.length > 200 ?
+                        <p>{details.slice(0, 250)} <Link to={`/courses-details/${_id}`}>Read More...</Link> </p>
+                        : 
+                        <p>{details}</p>
+                    }
+                    </Card.Text>
                 </Card.Body>
             </Card>
-            </Col>
-        ))}
-    </Row>
+        </div>
     );
 };
 
