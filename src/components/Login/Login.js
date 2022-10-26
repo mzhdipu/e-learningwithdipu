@@ -1,13 +1,29 @@
-import React from 'react';
 import "./Login.css"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Container, Row } from 'react-bootstrap';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
+
 
 
 const Login = () => {
+    const {googleSignIn} = useContext(AuthContext)
+    const provider = new GoogleAuthProvider();
+    const hangleGoogleLogin =()=>{
+
+        googleSignIn(provider)
+            .then(result =>{
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error=>{
+                console.log(error)
+            })
+    }
     return (
         <Container>
             <Row>
@@ -29,7 +45,7 @@ const Login = () => {
                     </Button>
 
                     <div className='text-center d-flex m-auto w-50'>
-                        <Button variant="danger rounded-0 m-2 fs-5 w-50"><FaGoogle/></Button>
+                        <Button onClick={hangleGoogleLogin} variant="danger rounded-0 m-2 fs-5 w-50"><FaGoogle/></Button>
                         <Button variant="secondary rounded-0 m-2 fs-5 w-50"><FaGithub/></Button>
                     </div>
 

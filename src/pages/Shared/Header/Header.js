@@ -1,11 +1,14 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { FaSignInAlt, FaUserCircle } from 'react-icons/fa';
+import { useContext } from 'react';
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
 const Header = () => {
+    const {user} = useContext(AuthContext)
     return (
         <div>
             <Navbar bg="primary" expand="lg">
@@ -19,7 +22,8 @@ const Header = () => {
                         <Link to="/faq" className='text-light mx-3 text-decoration-none fs-5'>Faq</Link>
                         <Link to="/blog" className='text-light mx-3 text-decoration-none fs-5'>Blog</Link>
                         <Link to="/login" className='text-light mx-3 text-decoration-none fs-5'><FaUserCircle/></Link>
-                        <Link to="/registration" className='text-light mx-3 text-decoration-none fs-5'><FaSignInAlt/></Link>
+                        <Link to="/registration" className='text-light mx-3 text-decoration-none fs-5'><FaSignInAlt/> </Link>
+                        <Link to="/registration" className='text-light mx-3 text-decoration-none fs-5'>{user?.displayName}</Link>
                     </Nav> 
                     </Navbar.Collapse>
                 </Container>
