@@ -9,6 +9,7 @@ import CourseDetails from "../components/CourseDetails/CourseDetails";
 import Faq from "../pages/Faq/Faq";
 import Home from "../pages/Home/Home";
 import NotFound from "../pages/NotFound/NotFound";
+import Category from "../pages/Category/Category";
 
 export const router = createBrowserRouter([
     {
@@ -33,6 +34,13 @@ export const router = createBrowserRouter([
                     return fetch(`https://e-learning-with-dipu-server.vercel.app/courses-details/${params.id}`)
                 }
             },
+
+            {
+                path: '/category/:id',
+                element: <Category></Category>,
+                loader: ({params}) => fetch(`https://e-learning-with-dipu-server.vercel.app/courses-details/category/${params.id}`)
+            },
+
             {
                 path : "/cart",
                 element : <Cart></Cart>
