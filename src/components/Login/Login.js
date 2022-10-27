@@ -6,15 +6,17 @@ import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 
 
 
 const Login = () => {
-    const {googleSignIn} = useContext(AuthContext)
-    const provider = new GoogleAuthProvider();
-    const hangleGoogleLogin =()=>{
+    const {googleSignIn, gitHubSignIn} = useContext(AuthContext)
 
+    const gitProvider = new GithubAuthProvider();
+    const provider = new GoogleAuthProvider();
+
+    const hangleGoogleLogin =()=>{
         googleSignIn(provider)
             .then(result =>{
                 const user = result.user;
@@ -24,6 +26,18 @@ const Login = () => {
                 console.log(error)
             })
     }
+
+    const hangleGithubLogin =()=>{
+        gitHubSignIn(gitProvider)
+            .then(result =>{
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error=>{
+                console.log(error)
+            })
+    }
+
     return (
         <Container>
             <Row>
@@ -46,7 +60,7 @@ const Login = () => {
 
                     <div className='text-center d-flex m-auto w-50'>
                         <Button onClick={hangleGoogleLogin} variant="danger rounded-0 m-2 fs-5 w-50"><FaGoogle/></Button>
-                        <Button variant="secondary rounded-0 m-2 fs-5 w-50"><FaGithub/></Button>
+                        <Button onClick={hangleGithubLogin} variant="secondary rounded-0 m-2 fs-5 w-50"><FaGithub/></Button>
                     </div>
 
                     <p className='mt-3'>New This Website ? <Link to="/registration">Please Registration</Link> </p>

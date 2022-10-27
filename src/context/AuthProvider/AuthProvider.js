@@ -14,6 +14,11 @@ const AuthProvider = ({children}) => {
         return signInWithPopup(auth, provider)
    }
 
+   // GitHub Login
+   const gitHubSignIn = (provider )=>{
+    return signInWithPopup(auth, provider)
+}
+
    useEffect(()=>{
         const unsubcribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)
@@ -25,7 +30,7 @@ const AuthProvider = ({children}) => {
 
     // const user = {displayName : "mzhdipu"}
 
-    const authInfo = {user, googleSignIn}
+    const authInfo = {user, googleSignIn, gitHubSignIn}
 
     return (
         <AuthContext.Provider value={authInfo}>
