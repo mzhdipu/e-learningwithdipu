@@ -10,7 +10,7 @@ const Home = () => {
                 <Row>
                     <div className='bg-light p-5 rounded shadow-lg'>
                         <h1 className='text-uppercase'>Are you Ready To <span className='text-primary text-uppercase fw-bold'>Learn !!</span></h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis debitis vel quidem, reiciendis, dolor at cumque molestiae doloremque aliquid asperiores quam saepe inventore possimus minus unde distinctio repellat eius similique?</p>
+                        <p>Coding literally turned your life around. It is one of the most rewarding careers Ive had to date. Once you get in, the possibilities are endless.</p>
                         <Button><Link to="/courses" className='text-white text-decoration-none fs-5 shadow-lg'>Get Started</Link></Button>
                     </div>
                 </Row>

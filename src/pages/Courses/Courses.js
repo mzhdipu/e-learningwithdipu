@@ -13,7 +13,7 @@ const Courses = () => {
             <Container>
                 <Row>
 
-                    <Col lg={3} className="">
+                    <Col lg={3} className="mt-5">
                         <LeftSideNavber></LeftSideNavber>
                     </Col>
 

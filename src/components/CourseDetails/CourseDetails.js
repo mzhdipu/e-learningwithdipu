@@ -14,7 +14,7 @@ const CourseDetails = () => {
             <Container>
                 <Row>
 
-                    <Col lg={3} className="bg-secondary ">
+                    <Col lg={3} className="mt-5">
                         <LeftSideNavber></LeftSideNavber>
                     </Col>
 
@@ -26,8 +26,8 @@ const CourseDetails = () => {
                                 <Card.Body>
                                 <Card.Title>{title}</Card.Title>
                                 <Card.Text>
-                                    {details}
-                                    <Link to="/cart" className='mx-3 text-decoration-none fs-5'>Get Premium Access</Link>
+                                    {details} <br /><br />
+                                    <Link to="/cart" className='btn btn-primary mx-3 text-decoration-none fs-5'>Get Premium Access</Link>
                                 </Card.Text>
                                 </Card.Body>
                             </Card>
