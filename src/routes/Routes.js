@@ -23,14 +23,14 @@ export const router = createBrowserRouter([
                 path : "/courses",
                 element : <Courses></Courses>,
                 loader : () => {
-                    return fetch(`http://localhost:5000/courses`)
+                    return fetch(`https://e-learning-with-dipu-server.vercel.app/courses`)
                 }
             },
             {
                 path : "/courses-details/:id",
                 element : <CourseDetails></CourseDetails>,
                 loader : ({params}) => {
-                    return fetch(`http://localhost:5000/courses-details/${params.id}`)
+                    return fetch(`https://e-learning-with-dipu-server.vercel.app/courses-details/${params.id}`)
                 }
             },
             {
