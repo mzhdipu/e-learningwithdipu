@@ -22,7 +22,6 @@ const Header = () => {
                         <Link to="/courses" className='text-light mx-3 text-decoration-none fs-5'>Courses</Link>
                         <Link to="/faq" className='text-light mx-3 text-decoration-none fs-5'>Faq</Link>
                         <Link to="/blog" className='text-light mx-3 text-decoration-none fs-5'>Blog</Link>
-                        <Link to="/login" className='text-light mx-3 text-decoration-none fs-5'><FaUserCircle/></Link>
                         <Link to="/registration" className='text-light mx-3 text-decoration-none fs-5'><FaSignInAlt/> </Link>
                         <Link to="/registration" className='text-light mx-3 text-decoration-none fs-5'>{user?.displayName}</Link>
                         <Link to="/profile">
@@ -35,6 +34,8 @@ const Header = () => {
                                 : <FaUser></FaUser>
                             }
                         </Link>
+                       
+
                     </Nav> 
                     </Navbar.Collapse>
                 </Container>

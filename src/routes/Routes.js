@@ -10,6 +10,7 @@ import Faq from "../pages/Faq/Faq";
 import Home from "../pages/Home/Home";
 import NotFound from "../pages/NotFound/NotFound";
 import Category from "../pages/Category/Category";
+import Profile from "../pages/Profile/Profile";
 
 export const router = createBrowserRouter([
     {
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
             {
                 path : "/registration",
                 element :<Registration></Registration>
+            },
+            {
+                path : "/profile",
+                element :<Profile></Profile>
             },
         ]
     },
