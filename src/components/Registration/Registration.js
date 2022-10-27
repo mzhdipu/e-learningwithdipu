@@ -1,17 +1,54 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import "./Registration.css";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Container, Row } from 'react-bootstrap';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Registration = () => {
+    const {googleSignIn, gitHubSignIn, createUser} = useContext(AuthContext)
+    const [error, setError] = useState('');
+
+    const gitProvider = new GithubAuthProvider();
+    const provider = new GoogleAuthProvider();
+
+    const hangleGoogleLogin =()=>{
+        googleSignIn(provider)
+            .then(result =>{
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error=>{
+                console.log(error)
+            })
+    }
+
+    const hangleGithubLogin =()=>{
+        gitHubSignIn(gitProvider)
+            .then(result =>{
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error=>{
+                console.log(error)
+            })
+    }
+
+    
+const handleSubmit = event => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+}
     return (
         <div>
             <Container>
                 <Row>
-                    <Form className='w-50 m-auto bg-light mt-5 p-4 rounded shadow-lg'>
+                    <Form onSubmit={handleSubmit}className='w-50 m-auto bg-light mt-5 p-4 rounded shadow-lg'>
 
                         <h2 className='mt-3 mb-4'>Registration Now</h2>
                         
@@ -39,12 +76,15 @@ const Registration = () => {
                         </Button>
 
                         <div className='text-center d-flex m-auto w-50'>
-                        <Button variant="danger rounded-0 m-2 fs-5 w-50"><FaGoogle/></Button>
-                        <Button variant="secondary rounded-0 m-2 fs-5 w-50"><FaGithub/></Button>
+                        <Button onClick={hangleGoogleLogin} variant="danger rounded-0 m-2 fs-5 w-50"><FaGoogle/></Button>
+                        <Button onClick={hangleGithubLogin} variant="secondary rounded-0 m-2 fs-5 w-50"><FaGithub/></Button>
                     </div>
 
                     <p className='mt-3'>Already Have an Account ? <Link to="/login">Please Login</Link> </p>
-                    </Form>
+                    <Form.Text className="text-danger">
+                        {error}
+                    </Form.Text>
+                   </Form>
                 </Row>
             </Container>
         </div>
